@@ -35,7 +35,7 @@ const HeroSection = () => {
       }}
     >
       <div className="hero-content w-full max-w-[1200px] px-4 py-8">
-        <h1 className="text-4xl font-semibold mb-4">ali bund dy toon</h1>
+        <h1 className="text-4xl font-semibold mb-4">Find the Perfect School for Your Child</h1>
         <p className="text-lg opacity-90 mb-12">
           Compare schools, read reviews, and make informed decisions for your child's education
         </p>
