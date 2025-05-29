@@ -6,9 +6,8 @@ import { Button } from '@mui/material';
 import { Context } from '../../Context/ContextProvider';
 
 const SchoolFinder = () => {
-    const { addFavorite,addRecentlyViewed } = useContext(Context);
+    const { addFavorite, addRecentlyViewed } = useContext(Context);
     const [schools, setSchools] = useState([]);
-    const [currentLocation, setCurrentLocation] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -19,8 +18,6 @@ const SchoolFinder = () => {
     const activeSchoolMarkerRef = useRef(null);
 
     const { state } = useLocation();
-    // const {  } = state || {};
-    // console.log("state", state.searchData.location)
     const [locationInput, setLocationInput] = useState(state.searchData.location);
 
     // Initialize map
@@ -38,7 +35,6 @@ const SchoolFinder = () => {
         };
     }, []);
 
-
     const geocode = async (query) => {
         try {
             setLoading(true);
@@ -54,7 +50,6 @@ const SchoolFinder = () => {
             const lat = parseFloat(data[0].lat);
             const lon = parseFloat(data[0].lon);
 
-            setCurrentLocation({ lat, lng: lon });
             showOnMap(lat, lon);
             searchSchoolsOverpass(lat, lon);
         } catch (err) {
@@ -68,11 +63,9 @@ const SchoolFinder = () => {
     const showOnMap = (lat, lon) => {
         mapRef.current.setView([lat, lon], 12);
 
-        // Remove existing user marker and range circle
         if (userMarkerRef.current) mapRef.current.removeLayer(userMarkerRef.current);
         if (rangeCircleRef.current) mapRef.current.removeLayer(rangeCircleRef.current);
 
-        // Add new user marker and range circle
         userMarkerRef.current = L.marker([lat, lon])
             .addTo(mapRef.current)
             .bindPopup('Your Location')
@@ -100,7 +93,7 @@ const SchoolFinder = () => {
     };
 
     const calculateDistance = (lat1, lon1, lat2, lon2) => {
-        const R = 6371; // Earth radius in km
+        const R = 6371;
         const dLat = (lat2 - lat1) * Math.PI / 180;
         const dLon = (lon2 - lon1) * Math.PI / 180;
         const a =
@@ -150,11 +143,8 @@ const SchoolFinder = () => {
                 const schoolLat = el.lat || el.center?.lat;
                 const schoolLon = el.lon || el.center?.lon;
                 const name = el.tags?.name || 'Unnamed School';
-
-                // Calculate distance from searched location to school
                 const dist = calculateDistance(lat, lon, schoolLat, schoolLon);
                 const distance = formatDistance(dist);
-
                 const address = getAddressFromOSM(el.tags || {});
 
                 return {
@@ -188,14 +178,6 @@ const SchoolFinder = () => {
             popupAnchor: [1, -34]
         });
 
-        const highlightedIcon =  L.icon({
-            iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-            iconSize: [35, 51],
-            iconAnchor: [17, 51],
-            popupAnchor: [1, -44],
-            className: 'highlighted-marker'
-        });
-
         const markers = schoolsData.map((school) => {
             const marker = L.marker([school.lat, school.lon], {
                 icon: defaultIcon,
@@ -221,10 +203,8 @@ const SchoolFinder = () => {
     };
 
     const handleSchoolClick = (school) => {
-        // Center map on the school
         mapRef.current.setView([school.lat, school.lon], 15);
-         addRecentlyViewed(school);
-        // Find and highlight the corresponding marker
+        addRecentlyViewed(school);
         const marker = schoolMarkersRef.current.find(m =>
             m.options.schoolId === school.id
         );
@@ -265,7 +245,6 @@ const SchoolFinder = () => {
             (pos) => {
                 const { latitude, longitude } = pos.coords;
                 setLocationInput('My Location');
-                setCurrentLocation({ lat: latitude, lng: longitude });
                 showOnMap(latitude, longitude);
                 searchSchoolsOverpass(latitude, longitude);
             },
@@ -273,11 +252,9 @@ const SchoolFinder = () => {
         );
     };
 
-
     return (
         <div className="bg-gray-100 min-h-screen mt-16">
             <div className="container mx-auto px-4 py-8 max-w-6xl">
-
                 <div className="bg-white p-4 rounded-lg shadow-md mb-6">
                     <div className="flex flex-wrap gap-3">
                         <input
@@ -322,11 +299,11 @@ const SchoolFinder = () => {
                             <p className="text-gray-600">No schools found in this area.</p>
                         )}
 
-                        <div className="space-y-4  ">
+                        <div className="space-y-4">
                             {schools.map((school) => (
                                 <div
                                     key={school.id}
-                                    className="py-5 px-5 bg-gray-50 border-l-4  border-blue-500 rounded cursor-pointer hover:bg-blue-50 hover:translate-x-1 transition-all"
+                                    className="py-5 px-5 bg-gray-50 border-l-4 border-blue-500 rounded cursor-pointer hover:bg-blue-50 hover:translate-x-1 transition-all"
                                     onClick={() => handleSchoolClick(school)}
                                 >
                                     <h3 className="font-medium text-lg">{school.name}</h3>
@@ -335,9 +312,8 @@ const SchoolFinder = () => {
                                         {school.distance}
                                     </span>
 
-                                    <div className='pt-5 flex justify-end items-end '>
-                                        <Button  onClick={() => addFavorite(school)} variant="outlined">   Add to Faverate  </Button>
-
+                                    <div className='pt-5 flex justify-end items-end'>
+                                        <Button onClick={() => addFavorite(school)} variant="outlined">Add to Favorites</Button>
                                     </div>
                                 </div>
                             ))}
