@@ -19,10 +19,10 @@ const Footer = () => (
         <div className="space-y-2">
           <h3 className="text-lg font-semibold">Contact</h3>
           <div className="text-gray-400 space-y-1">
-            <p><i className="fas fa-envelope mr-2"></i>alihussnainofficials09@gmail.com</p>
-            <p><i className="fas fa-phone mr-2"></i>+92 3463625155</p>
+            <p><i className="fas fa-envelope mr-2"></i>ali.hussnain3155@gmail.com</p>
+            <p><i className="fas fa-phone mr-2"></i>+92 3419243155</p>
             <p><i className="fas fa-map-marker-alt mr-2"></i>Goheer town Street 1,<br />
-            Bahawalpur, Pakistan</p>
+            Lahore, Pakistan </p>
           </div>
         </div>
         

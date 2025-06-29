@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function SignIn() {
@@ -9,27 +9,27 @@ export default function SignIn() {
   const [showPassword, setShowPassword] = useState(false);
   // const [error, setError] = useState('');
   const navigate = useNavigate();
-
+const [error, setError] = useState('');
   const handleSignIn = async (e) => {
     e.preventDefault();
 
-    // try {
-    //   const response = await axios.post('http://localhost:5000/api/users/login', {
-    //     email,
-    //     password,
-    //   });
+    try {
+      const response = await axios.post('http://localhost:5000/api/users/login', {
+        email,
+        password,
+      });
 
-    //   const { token, user } = response.data;
-    //   localStorage.setItem('token', token);
-    //   localStorage.setItem('user', JSON.stringify(user));
+      const { token, user } = response.data;
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(user));
 
-    //   setError('');
-    //   navigate('/');
-    // } catch (err) {
-    //   setError(
-    //     err.response?.data?.message || 'Invalid email or password. Please try again.'
-    //   );
-    // }
+      setError('');
+      navigate('/');
+    } catch (err) {
+      setError(
+        err.response?.data?.message || 'Invalid email or password. Please try again.'
+      );
+    }// 
   };
 
   const goToSignUp = () => {
@@ -45,7 +45,7 @@ export default function SignIn() {
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
         <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Welcome Back</h2>
 
-        {/* {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>} */}
+        {error && <p className="text-red-500 text-sm text-center mb-4">{error}</p>}
 
         <form onSubmit={handleSignIn} className="space-y-5">
           <div>

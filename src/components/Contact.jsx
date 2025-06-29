@@ -9,27 +9,27 @@ const Contact = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // const data = { name, email, message };
+    const data = { name, email, message };
 
-    // try {
-    //   const res = await fetch('http://localhost:5000/api/users/contact', {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/json' },
-    //     body: JSON.stringify(data),
-    //   });
+    try {
+      const res = await fetch('http://localhost:5000/api/users/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
 
-    //   const result = await res.json();
-    //   if (result.success) {
-    //     alert('Message sent successfully!');
-    //     setName('');
-    //     setEmail('');
-    //     setMessage('');
-    //   } else {
-    //     alert('Failed to send message');
-    //   }
-    // } catch (err) {
-    //   alert('Error: ' + err.message);
-    // }
+      const result = await res.json();
+      if (result.success) {
+        alert('Message sent successfully!');
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        alert('Failed to send message');
+      }
+    } catch (err) {
+      alert('Error: ' + err.message);
+    }
   };
 
   return (
@@ -111,7 +111,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Phone Number</p>
-                    <p className="text-indigo-100">+92 3463625155</p>
+                    <p className="text-indigo-100">+92 3419243155</p>
                   </div>
                 </div>
 
@@ -123,7 +123,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <p className="font-semibold">Email Address</p>
-                    <p className="text-indigo-100">alihussnainofficials09@gmail.com</p>
+                    <p className="text-indigo-100">ali.hussnain3155@gmail.com</p>
                   </div>
                 </div>
 
@@ -138,7 +138,7 @@ const Contact = () => {
                     <p className="font-semibold">Office Address</p>
                     <p className="text-indigo-100">
                       Goheer Town, Street 1<br />
-                      Bahawalpur, Pakistan
+                      Lahore, Pakistan
                     </p>
                   </div>
                 </div>

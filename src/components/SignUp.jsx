@@ -1,48 +1,57 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 export default function SignUp() {
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
+
   const [formData, setFormData] = useState({
     username: '',
-    email: '',
+    email:    '',
     password: '',
-    phone: '',
+    phone:    '',
   });
 
+  // update form fields
   const handleChange = (e) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     }));
   };
 
-  // const handleSignUp = async (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     await axios.post('http://localhost:5000/api/users/register', formData);
-  //     alert('Registration successful!');
-  //     navigate('/login');
-  //   } catch (err) {
-  //     alert(err.response?.data?.error || 'Something went wrong!');
-  //   }
-  // };
-
-  const goToSignIn = () => {
-    navigate('/login');
+  // submit handler
+  const handleSignUp = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:5000/api/users/register', formData);
+      alert('Registration successful!');
+      navigate('/login');
+    } catch (err) {
+      alert(err.response?.data?.error || 'Something went wrong!');
+    }
   };
+
+  // quick redirects
+  const goToSignIn = () => navigate('/login');
+  /* ---------------------------------------------------------- */
 
   return (
     <div className="min-h-screen mt-10 flex items-center justify-center bg-gradient-to-r from-green-100 to-teal-100">
       <div className="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md">
-        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">Create an Account</h2>
+        <h2 className="text-3xl font-bold mb-6 text-center text-gray-800">
+          Create an Account
+        </h2>
 
-        <form className="space-y-5">
+        {/* 🔑  onSubmit wired up to handleSignUp */}
+        <form onSubmit={handleSignUp} className="space-y-5">
+          {/* Full Name ------------------------------------------------ */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700">Full Name</label>
+            <label className="block mb-1 text-sm font-medium text-gray-700">
+              Full Name
+            </label>
             <input
               type="text"
               name="username"
@@ -50,12 +59,15 @@ export default function SignUp() {
               onChange={handleChange}
               required
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 outline-none"
-              placeholder="John Doe"
+              placeholder="John Doe"
             />
           </div>
 
+          {/* Email ---------------------------------------------------- */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700">Email Address</label>
+            <label className="block mb-1 text-sm font-medium text-gray-700">
+              Email Address
+            </label>
             <input
               type="email"
               name="email"
@@ -67,8 +79,11 @@ export default function SignUp() {
             />
           </div>
 
+          {/* Phone ---------------------------------------------------- */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700">Phone</label>
+            <label className="block mb-1 text-sm font-medium text-gray-700">
+              Phone
+            </label>
             <input
               type="text"
               name="phone"
@@ -80,8 +95,11 @@ export default function SignUp() {
             />
           </div>
 
+          {/* Password ------------------------------------------------- */}
           <div>
-            <label className="block mb-1 text-sm font-medium text-gray-700">Password</label>
+            <label className="block mb-1 text-sm font-medium text-gray-700">
+              Password
+            </label>
             <div className="relative">
               <input
                 type={showPassword ? 'text' : 'password'}
@@ -101,6 +119,7 @@ export default function SignUp() {
             </div>
           </div>
 
+          {/* Submit --------------------------------------------------- */}
           <button
             type="submit"
             className="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition duration-200"

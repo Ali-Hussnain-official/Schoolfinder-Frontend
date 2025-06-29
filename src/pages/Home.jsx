@@ -4,7 +4,7 @@ import HeroSection from '../components/HeroSection';
 import RecentlyViewed from '../components/RecentlyViewed';
 import PopularSearches from '../components/PopularSearches';
 import FeaturesSection from '../components/FeaturesSection';
-// import BenefitsSection from '../components/BenefitsSection';
+import BenefitsSection from '../components/BenefitsSection';
 import Footer from '../components/Footer';
 
 const Home = () => {
@@ -16,7 +16,7 @@ const Home = () => {
         <RecentlyViewed />
         <PopularSearches />
         <FeaturesSection />
-        {/* { <BenefitsSection /> } */}
+        { <BenefitsSection /> }
       </main>
 
     </div>
