@@ -137,8 +137,8 @@ const Contact = () => {
                   <div>
                     <p className="font-semibold">Office Address</p>
                     <p className="text-indigo-100">
-                      Goheer Town, Street 1<br />
-                      Lahore, Pakistan
+                      Lahore,<br />
+                      Punjab, Pakistan
                     </p>
                   </div>
                 </div>
@@ -148,10 +148,10 @@ const Contact = () => {
             <div className="bg-white p-8 rounded-2xl shadow-xl">
               <h4 className="text-xl font-semibold mb-6 text-gray-800">Follow Us</h4>
               <div className="flex space-x-4">
-                <a href="https://facebook.com" className="p-3 rounded-full bg-blue-600 text-white hover:bg-blue-700"><FaFacebookF /></a>
-                <a href="https://twitter.com" className="p-3 rounded-full bg-sky-500 text-white hover:bg-sky-600"><FaTwitter /></a>
-                <a href="https://linkedin.com" className="p-3 rounded-full bg-blue-700 text-white hover:bg-blue-800"><FaLinkedinIn /></a>
-                <a href="https://instagram.com" className="p-3 rounded-full bg-pink-500 text-white hover:bg-pink-600"><FaInstagram /></a>
+                <a href="https://www.linkedin.com/in/ali-hussnain-b706b82b3/" className="p-3 rounded-full bg-blue-600 text-white hover:bg-blue-700"><FaFacebookF /></a>
+                <a href="https://www.linkedin.com/in/ali-hussnain-b706b82b3/" className="p-3 rounded-full bg-sky-500 text-white hover:bg-sky-600"><FaTwitter /></a>
+                <a href="https://www.linkedin.com/in/ali-hussnain-b706b82b3/" className="p-3 rounded-full bg-blue-700 text-white hover:bg-blue-800"><FaLinkedinIn /></a>
+                <a href="https://www.linkedin.com/in/ali-hussnain-b706b82b3/" className="p-3 rounded-full bg-pink-500 text-white hover:bg-pink-600"><FaInstagram /></a>
               </div>
             </div>
           </div>
