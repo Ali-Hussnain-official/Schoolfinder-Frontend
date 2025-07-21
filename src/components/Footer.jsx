@@ -21,18 +21,18 @@ const Footer = () => (
           <div className="text-gray-400 space-y-1">
             <p><i className="fas fa-envelope mr-2"></i>ali.hussnain3155@gmail.com</p>
             <p><i className="fas fa-phone mr-2"></i>+92 3419243155</p>
-            <p><i className="fas fa-map-marker-alt mr-2"></i>Goheer town Street 1,<br />
-            Lahore, Pakistan </p>
+            <p><i className="fas fa-map-marker-alt mr-2"></i>Lahore,<br />
+            Punjab, Pakistan </p>
           </div>
         </div>
         
         <div className="space-y-2">
           <h3 className="text-lg font-semibold">Follow Us</h3>
           <div className="flex gap-4 text-2xl text-gray-400">
-            <a href="https://www.linkedin.com/in/fiaz-hussain-671679340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="hover:text-blue-400"><i className="fab fa-facebook"></i></a>
-            <a href="https://www.linkedin.com/in/fiaz-hussain-671679340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="hover:text-blue-400"><i className="fab fa-twitter"></i></a>
-            <a href="https://www.linkedin.com/in/fiaz-hussain-671679340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="hover:text-blue-400"><i className="fab fa-instagram"></i></a>
-            <a href="https://www.linkedin.com/in/fiaz-hussain-671679340?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" className="hover:text-blue-400"><i className="fab fa-linkedin"></i></a>
+            <a href="https://www.linkedin.com/in/ali-hussnain-b706b82b3/" className="hover:text-blue-400"><i className="fab fa-facebook"></i></a>
+            <a href="https://www.linkedin.com/in/ali-hussnain-b706b82b3/" className="hover:text-blue-400"><i className="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/ali-hussnain-b706b82b3/" className="hover:text-blue-400"><i className="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/ali-hussnain-b706b82b3/" className="hover:text-blue-400"><i className="fab fa-linkedin"></i></a>
           </div>
         </div>
       </div>
